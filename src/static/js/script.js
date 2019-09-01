@@ -7,28 +7,23 @@ $(document).ready(function () {
     // Activate Carousel
     $("#carousel").carousel({interval: 5000});
 
-    // Function applied when scrolling the window
+    // Functions applied when scrolling the window
     $(window).on('scroll', function () {
-        var scrollTop = $(this).scrollTop();
-        console.log(scrollTop);
+
+        const scrollTop = $(this).scrollTop();
+        // console.log(scrollTop);
 
         // Parallax effect
-        $('.parallax-1').each(function (index, elem) {
-            var $elem = $(elem);
-            $elem.find('img').css('top', scrollTop - $elem.offset().top + 100);
-        });
+        $('.parallax-1').find('img').css('top', scrollTop - $('.parallax-1').offset().top + 100);
+        $('.parallax-2').find('img').css('top', scrollTop - $('.parallax-2').offset().top + 50);
 
-        $('.parallax-2').each(function (index, elem) {
-            var $elem = $(elem);
-            $elem.find('img').css('top', scrollTop - $elem.offset().top + 50);
-        });
 
         // Apparition effect
-        var elemStory = $('.item-story-effect');
+        const elemStory = $('.item-story-effect');
 
         $(elemStory).each(function () {
-            // Take the current position (vertical position from top) of my div in the variable
-            var elemStoryTop = $(this).offset().top - 200;
+            // Current position (vertical position from top) of my div in the variable
+            let elemStoryTop = $(this).offset().top - 200;
 
             if (elemStoryTop < scrollTop) {
                 $(this).animate({opacity: '1'}, "100");
